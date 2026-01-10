@@ -27,6 +27,12 @@
           <AssociatedConnUserName />
           <FullPath>SQLQuery ALL in One.sql</FullPath>
         </FileNode>
+        <FileNode Name="SQLQuery0_All-in-One.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-MU2UJAA\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-MU2UJAA\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery0_All-in-One.sql</FullPath>
+        </FileNode>
         <FileNode Name="SQLQuery0-CREATE DATABASE.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-MU2UJAA\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-MU2UJAA\SQLEXPRESS</AssociatedConnSrvName>
