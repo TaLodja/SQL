@@ -1,14 +1,14 @@
---SQLQuery4-SELECT Teachers&Disciplines.sql
+п»ї--SQLQuery4-SELECT Teachers&Disciplines.sql
 USE SPU_411_Import
 
 SELECT
-		[Преподаватель]	=	FORMATMESSAGE(N'%s %s %s', last_name, first_name, middle_name),
-		[Дисциплина]	=	discipline_name
+		[РџСЂРµРїРѕРґР°РІР°С‚РµР»СЊ]	=	FORMATMESSAGE(N'%s %s %s', last_name, first_name, middle_name),
+		[Р”РёСЃС†РёРїР»РёРЅР°]	=	discipline_name
 FROM Teachers,Disciplines,TeachersDisciplinesRelation
 WHERE	teacher			=	teacher_id
 AND		discipline		=	discipline_id
---AND		last_name		=	N'Покидюк'
-AND		discipline_name LIKE N'Системное%'
+--AND		last_name		=	N'РџРѕРєРёРґСЋРє'
+AND		discipline_name LIKE N'РЎРёСЃС‚РµРјРЅРѕРµ%'
 ;
 
 --SELECT * FROM	TeachersDisciplinesRelation;

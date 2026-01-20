@@ -22,8 +22,8 @@
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
         <FileNode Name="SQLQuery1-INSERT Directions.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-MU2UJAA\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-MU2UJAA\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>SQLQuery1-INSERT Directions.sql</FullPath>
         </FileNode>
@@ -45,11 +45,23 @@
           <AssociatedConnUserName />
           <FullPath>SQLQuery3-SELECT COUNT Groups&amp;Students.sql</FullPath>
         </FileNode>
+        <FileNode Name="SQLQuery4-SELECT COUNT Teachers&amp;Disciplines.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-MU2UJAA\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-MU2UJAA\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery4-SELECT COUNT Teachers&amp;Disciplines.sql</FullPath>
+        </FileNode>
         <FileNode Name="SQLQuery4-SELECT Teachers&amp;Disciplines.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-MU2UJAA\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-MU2UJAA\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>SQLQuery4-SELECT Teachers&amp;Disciplines.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery5-SELECT Directions&amp;Disciplines.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-MU2UJAA\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-MU2UJAA\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery5-SELECT Directions&amp;Disciplines.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
