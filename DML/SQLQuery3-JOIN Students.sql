@@ -14,6 +14,16 @@ USE SPU_411_Import;
 --WHERE	stud_id = 26
 --;
 
+SELECT	
+			[Группа]					=	group_name,
+			[Количество студентов]		=	COUNT(stud_id),
+			[Направление обучения]		=	direction_name
+FROM		Students
+RIGHT JOIN	Groups		ON	[group]		=	group_id
+JOIN		Directions	ON	direction	=	direction_id
+GROUP BY	group_name, direction_name
+;
+
 --SELECT
 --			[Направление обучения]		=	direction_name,
 --			[Количество групп]			=	COUNT(DISTINCT group_id),
@@ -30,24 +40,26 @@ USE SPU_411_Import;
 --		RIGHT	OUTER JOIN
 --		FULL	OUTER JOIN
 
---SELECT	
---			[Группа]					=	group_name,
---			[Количество студентов]		=	COUNT(stud_id),
---			[Направление обучения]		=	direction_name
---FROM		Students
---RIGHT JOIN	Groups		ON	[group]		=	group_id
---JOIN		Directions	ON	direction	=	direction_id
---GROUP BY	group_name, direction_name
---;
+--Вывод по каждому направлению общего количества групп, количества пустых групп и количества заполненных групп
+WITH	Students_number
+		AS
+		(SELECT		gr				=	group_name,
+					student_number	=	COUNT(stud_id)
+		FROM		Students
+		RIGHT JOIN	Groups		ON	[group]		=	group_id
+		GROUP BY	group_name
+		)
 
 SELECT
-			[Направление обучения]		=	direction_name,
-			[Количество групп]			=	COUNT(group_id),
-			[Количество пустых групп]	=	(SELECT COUNT(group_id) FROM Students JOIN Groups on [group]=group_id HAVING COUNT(stud_id)=0)
+			[Направление обучения]			=	direction_name,
+			[Общее количество групп]		=	COUNT(DISTINCT group_id),
+			[Количество пустых групп]		=	COUNT(CASE WHEN student_number = 0 THEN 1 END),
+			[Количество заполненных групп]	=	COUNT(DISTINCT group_id) - COUNT(CASE WHEN student_number = 0 THEN 1 END)
 FROM		Students
 RIGHT JOIN	Groups		ON	[group]		=	group_id
 JOIN		Directions	ON	direction	=	direction_id
+JOIN		Students_number ON group_name = gr
 GROUP BY	direction_name
 ;
 
-SELECT COUNT(group_id) FROM Students RIGHT JOIN Groups ON [group]=group_id GROUP BY group_id --HAVING COUNT(stud_id)=0;
+--SELECT COUNT(group_id) FROM Students RIGHT JOIN Groups ON [group]=group_id GROUP BY group_id --HAVING COUNT(stud_id)=0;
