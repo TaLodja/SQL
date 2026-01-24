@@ -1,4 +1,4 @@
-﻿--SQLQuery2-SELECT ScheduleSchedule CREATE PROCEDURE.sql
+﻿--SQLQuery2-SELECT SelectSchedule CREATE PROCEDURE.sql
 USE SPU_411_Import;
 GO
 

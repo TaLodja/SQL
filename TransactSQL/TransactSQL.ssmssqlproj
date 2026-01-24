@@ -69,11 +69,11 @@
           <AssociatedConnUserName />
           <FullPath>SQLQuery2-SELECT Schedule CREATE PROCEDURE.sql</FullPath>
         </FileNode>
-        <FileNode Name="SQLQuery2-SELECT ScheduleSchedule CREATE PROCEDURE.sql">
+        <FileNode Name="SQLQuery2-SELECT SelectSchedule CREATE PROCEDURE.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-MU2UJAA\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-MU2UJAA\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>SQLQuery2-SELECT ScheduleSchedule CREATE PROCEDURE.sql</FullPath>
+          <FullPath>SQLQuery2-SELECT SelectSchedule CREATE PROCEDURE.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
