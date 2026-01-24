@@ -21,6 +21,12 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
+        <FileNode Name="SQLQuery0-CHECK PROCEDURES.sql.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-MU2UJAA\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-MU2UJAA\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery0-CHECK PROCEDURES.sql.sql</FullPath>
+        </FileNode>
         <FileNode Name="SQLQuery1-INSERT Schedule PV_319_.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-MU2UJAA\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-MU2UJAA\SQLEXPRESS</AssociatedConnSrvName>
@@ -50,6 +56,12 @@
           <AssociatedConnSrvName>DESKTOP-MU2UJAA\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>SQLQuery1-SELECT Schedule.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery2-SELECT Schedule CREATE PROCEDURE.sql.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-MU2UJAA\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-MU2UJAA\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery2-SELECT Schedule CREATE PROCEDURE.sql.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
