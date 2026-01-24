@@ -1,4 +1,4 @@
---SQLQuery1-INSERT Schedule semistacionar.sql
+п»ї--SQLQuery1-INSERT Schedule semistacionar.sql
 USE SPU_411_Import;
 
 --INSERT Groups
@@ -6,10 +6,10 @@ USE SPU_411_Import;
 --VALUES	(411,		N'SPU_411',	1);
 
 DECLARE	@group				AS	INT		=(SELECT group_id			FROM Groups			WHERE group_name		=	N'SPU_411');
-DECLARE	@discipline			AS	SMALLINT=(SELECT discipline_id		FROM Disciplines	WHERE discipline_name LIKE	(N'Процедурное%C++'));
+DECLARE	@discipline			AS	SMALLINT=(SELECT discipline_id		FROM Disciplines	WHERE discipline_name LIKE	(N'РџСЂРѕС†РµРґСѓСЂРЅРѕРµ%C++'));
 DECLARE	@number_of_lessons	AS	TINYINT	=(SELECT number_of_lessons	FROM Disciplines	WHERE discipline_id		=	@discipline);
 DECLARE @lesson_number		AS	INT		=0;
-DECLARE	@teacher			AS	INT		=(SELECT teacher_id			FROM Teachers		WHERE first_name	LIKE	(N'Олег'));
+DECLARE	@teacher			AS	INT		=(SELECT teacher_id			FROM Teachers		WHERE first_name	LIKE	(N'РћР»РµРі'));
 DECLARE @start_date			AS	DATE	=N'2024-10-26';
 DECLARE @date				AS	DATE	=@start_date;
 DECLARE	@start_time			AS	TIME	=N'10:00';
@@ -59,11 +59,11 @@ END
 ;
 
 SELECT
-		[Группа]		=		group_name,
-		[Дата]			=		[date],
-		[Время]			=		[time],
-		[Дисциплина]	=		discipline_name,
-		[Преподаватель] =		FORMATMESSAGE(N'%s %s %s', last_name, first_name, middle_name)
+		[Р“СЂСѓРїРїР°]		=		group_name,
+		[Р”Р°С‚Р°]			=		[date],
+		[Р’СЂРµРјСЏ]			=		[time],
+		[Р”РёСЃС†РёРїР»РёРЅР°]	=		discipline_name,
+		[РџСЂРµРїРѕРґР°РІР°С‚РµР»СЊ] =		FORMATMESSAGE(N'%s %s %s', last_name, first_name, middle_name)
 FROM	Schedule
 JOIN	Groups			ON		([group]=group_id)
 JOIN	Disciplines		ON		discipline=discipline_id

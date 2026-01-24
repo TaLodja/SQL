@@ -21,11 +21,11 @@
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
-        <FileNode Name="SQLQuery0-CHECK PROCEDURES.sql.sql">
+        <FileNode Name="SQLQuery0-CHECK PROCEDURES.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-MU2UJAA\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-MU2UJAA\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>SQLQuery0-CHECK PROCEDURES.sql.sql</FullPath>
+          <FullPath>SQLQuery0-CHECK PROCEDURES.sql</FullPath>
         </FileNode>
         <FileNode Name="SQLQuery1-INSERT Schedule PV_319_.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-MU2UJAA\SQLEXPRESS:True</AssociatedConnectionMoniker>
@@ -57,11 +57,23 @@
           <AssociatedConnUserName />
           <FullPath>SQLQuery1-SELECT Schedule.sql</FullPath>
         </FileNode>
-        <FileNode Name="SQLQuery2-SELECT Schedule CREATE PROCEDURE.sql.sql">
+        <FileNode Name="SQLQuery2-INSERT Schedule semisracionar PROCEDURE.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-MU2UJAA\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-MU2UJAA\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>SQLQuery2-SELECT Schedule CREATE PROCEDURE.sql.sql</FullPath>
+          <FullPath>SQLQuery2-INSERT Schedule semisracionar PROCEDURE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery2-SELECT Schedule CREATE PROCEDURE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-MU2UJAA\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-MU2UJAA\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery2-SELECT Schedule CREATE PROCEDURE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery2-SELECT ScheduleSchedule CREATE PROCEDURE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-MU2UJAA\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-MU2UJAA\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery2-SELECT ScheduleSchedule CREATE PROCEDURE.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>

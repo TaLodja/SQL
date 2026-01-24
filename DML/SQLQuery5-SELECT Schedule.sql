@@ -1,12 +1,12 @@
---SQLQuery5-SELECT Schedule.sql
+п»ї--SQLQuery5-SELECT Schedule.sql
 USE SPU_411_Import;
 
 SELECT
-		[Группа]		=		group_name,
-		[Дата]			=		[date],
-		[Время]			=		[time],
-		[Дисциплина]	=		discipline_name,
-		[Преподаватель] =		FORMATMESSAGE(N'%s %s %s', last_name, first_name, middle_name)
+		[Р“СЂСѓРїРїР°]		=		group_name,
+		[Р”Р°С‚Р°]			=		[date],
+		[Р’СЂРµРјСЏ]			=		[time],
+		[Р”РёСЃС†РёРїР»РёРЅР°]	=		discipline_name,
+		[РџСЂРµРїРѕРґР°РІР°С‚РµР»СЊ] =		FORMATMESSAGE(N'%s %s %s', last_name, first_name, middle_name)
 FROM	Schedule
 JOIN	Groups			ON		([group]=group_id)
 JOIN	Disciplines		ON		discipline=discipline_id
