@@ -28,23 +28,48 @@ BEGIN
 	PRINT @date;
 	--------------------------------------------------
 	SET @time = @start_time;
-	INSERT	Schedule
-			([group],	discipline,		teacher,	[date],	[time],	spent)
-	VALUES	(@group,	@discipline,	@teacher,	@date,	@time, IIF(@date<GETDATE(),1,0));
+	IF NOT EXISTS (SELECT [group] FROM Schedule WHERE [group]=@group AND [date]=@date AND [time]=@time)
+	BEGIN
+		INSERT	Schedule
+				([group],	discipline,		teacher,	[date],	[time],	spent)
+		VALUES	(@group,	@discipline,	@teacher,	@date,	@time, IIF(@date<GETDATE(),1,0));
+	END
 	SET @lesson_number = @lesson_number + 1;
 	--------------------------------------------------
 	SET @time = DATEADD(MINUTE, 95, @time);;
-	INSERT	Schedule
-			([group],	discipline,		teacher,	[date],	[time],	spent)
-	VALUES	(@group,	@discipline,	@teacher,	@date,	@time, IIF(@date<GETDATE(),1,0));
+	IF NOT EXISTS (SELECT [group] FROM Schedule WHERE [group]=@group AND [date]=@date AND [time]=@time)
+	BEGIN
+		INSERT	Schedule
+				([group],	discipline,		teacher,	[date],	[time],	spent)
+		VALUES	(@group,	@discipline,	@teacher,	@date,	@time, IIF(@date<GETDATE(),1,0));
+	END
 	SET @lesson_number = @lesson_number + 1;
 	--------------------------------------------------
 	SET @time = DATEADD(MINUTE, 95, @time);
-	INSERT	Schedule
-			([group],	discipline,		teacher,	[date],	[time],	spent)
-	VALUES	(@group,	@discipline,	@teacher,	@date,	@time, IIF(@date<GETDATE(),1,0));
+	IF NOT EXISTS (SELECT [group] FROM Schedule WHERE [group]=@group AND [date]=@date AND [time]=@time)
+	BEGIN
+		INSERT	Schedule
+				([group],	discipline,		teacher,	[date],	[time],	spent)
+		VALUES	(@group,	@discipline,	@teacher,	@date,	@time, IIF(@date<GETDATE(),1,0));
+	END
 	SET @lesson_number = @lesson_number + 1;
 	--------------------------------------------------
 	SET @date = DATEADD(DAY, 7, @date);
 END
 ;
+
+SELECT
+		[Группа]		=		group_name,
+		[Дата]			=		[date],
+		[Время]			=		[time],
+		[Дисциплина]	=		discipline_name,
+		[Преподаватель] =		FORMATMESSAGE(N'%s %s %s', last_name, first_name, middle_name)
+FROM	Schedule
+JOIN	Groups			ON		([group]=group_id)
+JOIN	Disciplines		ON		discipline=discipline_id
+JOIN	Teachers		ON		teacher=teacher_id
+WHERE	group_name		=		N'SPU_411'
+ORDER BY [date]
+;
+
+SELECT COUNT([group]) FROM Schedule JOIN Groups ON [group] = group_id WHERE group_name = N'SPU_411';

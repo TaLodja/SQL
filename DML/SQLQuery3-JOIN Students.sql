@@ -14,16 +14,6 @@ USE SPU_411_Import;
 --WHERE	stud_id = 26
 --;
 
-SELECT	
-			[Группа]					=	group_name,
-			[Количество студентов]		=	COUNT(stud_id),
-			[Направление обучения]		=	direction_name
-FROM		Students
-RIGHT JOIN	Groups		ON	[group]		=	group_id
-JOIN		Directions	ON	direction	=	direction_id
-GROUP BY	group_name, direction_name
-;
-
 --SELECT
 --			[Направление обучения]		=	direction_name,
 --			[Количество групп]			=	COUNT(DISTINCT group_id),
@@ -63,3 +53,13 @@ GROUP BY	direction_name
 ;
 
 --SELECT COUNT(group_id) FROM Students RIGHT JOIN Groups ON [group]=group_id GROUP BY group_id --HAVING COUNT(stud_id)=0;
+
+SELECT	
+			[Группа]					=	group_name,
+			[Количество студентов]		=	COUNT(stud_id),
+			[Направление обучения]		=	direction_name
+FROM		Students
+RIGHT JOIN	Groups		ON	[group]		=	group_id
+JOIN		Directions	ON	direction	=	direction_id
+GROUP BY	group_name, direction_name
+;
