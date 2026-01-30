@@ -9,6 +9,15 @@ BEGIN
 	SELECT
 			[Группа]		=		group_name,
 			[Дата]			=		[date],
+			[День недели]	=	(SELECT CASE DATEPART(dw, [date])
+								WHEN	1 THEN N'Вс'
+								WHEN	2 THEN N'Пн'
+								WHEN	3 THEN N'Вт'
+								WHEN	4 THEN N'Ср'
+								WHEN	5 THEN N'Чт'
+								WHEN	6 THEN N'Пт'
+								WHEN	7 THEN N'Сб'
+								END AS DayOfWeek),
 			[Время]			=		[time],
 			[Дисциплина]	=		discipline_name,
 			[Преподаватель]	=		FORMATMESSAGE(N'%s %s %s', last_name, first_name, middle_name),

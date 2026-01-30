@@ -57,11 +57,23 @@
           <AssociatedConnUserName />
           <FullPath>SQLQuery1-SELECT Schedule.sql</FullPath>
         </FileNode>
-        <FileNode Name="SQLQuery2-INSERT Schedule semisracionar PROCEDURE.sql">
+        <FileNode Name="SQLQuery2-DELETE Discipline PROCEDURE.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-MU2UJAA\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>DESKTOP-MU2UJAA\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>SQLQuery2-INSERT Schedule semisracionar PROCEDURE.sql</FullPath>
+          <FullPath>SQLQuery2-DELETE Discipline PROCEDURE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery2-INSERT OneLessonInSchedule PROCEDURE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-MU2UJAA\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-MU2UJAA\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery2-INSERT OneLessonInSchedule PROCEDURE.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery2-INSERT Schedule semistacionar PROCEDURE.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-MU2UJAA\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-MU2UJAA\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery2-INSERT Schedule semistacionar PROCEDURE.sql</FullPath>
         </FileNode>
         <FileNode Name="SQLQuery2-SELECT Schedule CREATE PROCEDURE.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-MU2UJAA\SQLEXPRESS:True</AssociatedConnectionMoniker>
