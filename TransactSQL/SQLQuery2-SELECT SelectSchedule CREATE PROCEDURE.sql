@@ -3,14 +3,50 @@ USE SPU_411_Import;
 GO
 
 --CREATE PROCEDURE sp_SelectSchedule
+ALTER PROCEDURE sp_SelectSchedule
+	@group_name			AS	NVARCHAR(24),
+	@discipline_name	AS	NVARCHAR(150)
+AS
+BEGIN
+	DECLARE @group_id		AS	INT			= (SELECT group_id		FROM Groups			WHERE group_name = @group_name);
+	DECLARE @discipline_id	AS	SMALLINT	= (SELECT discipline_id FROM Disciplines	WHERE discipline_name LIKE @discipline_name);
+	SELECT
+			[Группа]		=	group_name,
+			[Время]			=	[time],
+			[Дата]			=	[date],
+			[День недели]	=	FORMAT([date], N'ddd', 'ru-RU'),
+			[Дисциплина]	=	discipline_name,
+			[Преподаватель]	=	FORMATMESSAGE(N'%s %s %s', last_name, first_name, middle_name),
+			[Статус]		=	IIF(spent=1, N'Проведено', N'Запланировано')
+	FROM	Schedule
+	JOIN	Groups			ON	[group]=group_id
+	JOIN	Disciplines		ON	discipline=discipline_id
+	JOIN	Teachers		ON	teacher=teacher_id
+	WHERE	group_id		=	@group_id
+	AND		discipline_id	=	@discipline_id
+	ORDER BY [date]
+END
+
+--Вывод дня недели и оптимизация
 --ALTER PROCEDURE sp_SelectSchedule
 --	@group_name			AS	NVARCHAR(24),
 --	@discipline_name	AS	NVARCHAR(150)
 --AS
 --BEGIN
+--	DECLARE @group		AS INT		= (SELECT group_id		FROM Groups			WHERE group_name = @group_name);
+--	DECLARE @discipline	AS SMALLINT	= (SELECT discipline_id FROM Disciplines	WHERE discipline_name LIKE @discipline_name);
 --	SELECT
 --			[Группа]		=	group_name,
 --			[Дата]			=	[date],
+--			[День недели]	=	(SELECT CASE DATEPART(dw, [date])
+--								WHEN	1 THEN N'Вс'
+--								WHEN	2 THEN N'Пн'
+--								WHEN	3 THEN N'Вт'
+--								WHEN	4 THEN N'Ср'
+--								WHEN	5 THEN N'Чт'
+--								WHEN	6 THEN N'Пт'
+--								WHEN	7 THEN N'Сб'
+--								END AS DayOfWeek),
 --			[Время]			=	[time],
 --			[Дисциплина]	=	discipline_name,
 --			[Преподаватель]	=	FORMATMESSAGE(N'%s %s %s', last_name, first_name, middle_name),
@@ -19,38 +55,6 @@ GO
 --	JOIN	Groups			ON	[group]=group_id
 --	JOIN	Disciplines		ON	discipline=discipline_id
 --	JOIN	Teachers		ON	teacher=teacher_id
---	WHERE	group_name		=	@group_name
---	AND		discipline_name	LIKE	@discipline_name
+--	WHERE	group_id		=	@group
+--	AND		discipline_id	=	@discipline
 --END
-
---Вывод дня недели и оптимизация
-ALTER PROCEDURE sp_SelectSchedule
-	@group_name			AS	NVARCHAR(24),
-	@discipline_name	AS	NVARCHAR(150)
-AS
-BEGIN
-	DECLARE @group		AS INT		= (SELECT group_id		FROM Groups			WHERE group_name = @group_name);
-	DECLARE @discipline	AS SMALLINT	= (SELECT discipline_id FROM Disciplines	WHERE discipline_name LIKE @discipline_name);
-	SELECT
-			[Группа]		=	group_name,
-			[Дата]			=	[date],
-			[День недели]	=	(SELECT CASE DATEPART(dw, [date])
-								WHEN	1 THEN N'Вс'
-								WHEN	2 THEN N'Пн'
-								WHEN	3 THEN N'Вт'
-								WHEN	4 THEN N'Ср'
-								WHEN	5 THEN N'Чт'
-								WHEN	6 THEN N'Пт'
-								WHEN	7 THEN N'Сб'
-								END AS DayOfWeek),
-			[Время]			=	[time],
-			[Дисциплина]	=	discipline_name,
-			[Преподаватель]	=	FORMATMESSAGE(N'%s %s %s', last_name, first_name, middle_name),
-			[Статус]		=	IIF(spent=1, N'Проведено', N'Запланировано')
-	FROM	Schedule
-	JOIN	Groups			ON	[group]=group_id
-	JOIN	Disciplines		ON	discipline=discipline_id
-	JOIN	Teachers		ON	teacher=teacher_id
-	WHERE	group_id		=	@group
-	AND		discipline_id	=	@discipline
-END

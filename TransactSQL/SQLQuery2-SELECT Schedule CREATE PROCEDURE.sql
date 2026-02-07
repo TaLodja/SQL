@@ -8,17 +8,11 @@ AS
 BEGIN
 	SELECT
 			[Группа]		=		group_name,
-			[Дата]			=		[date],
-			[День недели]	=	(SELECT CASE DATEPART(dw, [date])
-								WHEN	1 THEN N'Вс'
-								WHEN	2 THEN N'Пн'
-								WHEN	3 THEN N'Вт'
-								WHEN	4 THEN N'Ср'
-								WHEN	5 THEN N'Чт'
-								WHEN	6 THEN N'Пт'
-								WHEN	7 THEN N'Сб'
-								END AS DayOfWeek),
 			[Время]			=		[time],
+			[Дата]			=		[date],
+			--[День недели]	=		DATENAME(WEEKDAY, [date]),
+			[День недели]	=		FORMAT([date], N'ddd', 'ru-RU'),
+			--[День недели]	=		RIGHT(DATENAME(WEEKDAY, [date]), 3),
 			[Дисциплина]	=		discipline_name,
 			[Преподаватель]	=		FORMATMESSAGE(N'%s %s %s', last_name, first_name, middle_name),
 			[Статус]		=		IIF(spent=1, N'Проведено', N'Запланировано')
@@ -26,4 +20,5 @@ BEGIN
 	JOIN	Groups			ON		[group]=group_id
 	JOIN	Disciplines		ON		discipline=discipline_id
 	JOIN	Teachers		ON		teacher=teacher_id
+	ORDER BY [date]
 END

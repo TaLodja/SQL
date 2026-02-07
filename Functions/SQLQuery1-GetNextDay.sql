@@ -1,0 +1,43 @@
+﻿--SQLQuery1-GetNextDay.sql
+SET DATEFIRST 1;
+USE SPU_411_Import;
+GO
+
+--CREATE
+ALTER
+	FUNCTION GetNextDay(@group_name AS NVARCHAR(24))
+RETURNS TINYINT
+AS
+BEGIN
+	DECLARE @group_id		AS	INT		= (SELECT group_id FROM Groups WHERE group_name = @group_name);
+	DECLARE @learning_days	AS	TINYINT = (SELECT weekdays FROM Groups WHERE group_id = @group_id);
+	DECLARE @last_date		AS	DATE	= dbo.GetLastDate(@group_name);
+	DECLARE @weekday		AS	TINYINT	= DATEPART(WEEKDAY, @last_date);
+	DECLARE @day			AS	TiNYINT = @weekday;
+	DECLARE @next_day		AS	TINYINT = 1;
+	WHILE @day <= 7
+	BEGIN
+		SET @day = @day + 1;
+		IF (POWER(2, @day-1) & @learning_days > 0) 
+		BEGIN
+			SET @next_day = @day;
+			BREAK;
+		END
+	END
+
+	IF @next_day = 1
+	BEGIN
+		SET @day = 1;
+		WHILE @day <= @weekday
+		BEGIN
+			IF (POWER(2, @day-1) & @learning_days > 0)
+			BEGIN
+				SET @next_day = @day;
+				BREAK;
+			END
+			SET @day = @day + 1;
+		END
+	END
+
+	RETURN @next_day;
+END
