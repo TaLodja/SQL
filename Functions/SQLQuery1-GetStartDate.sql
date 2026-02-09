@@ -2,7 +2,9 @@
 USE SPU_411_Import;
 GO
 
-CREATE FUNCTION GetStartDate(@group_name AS NVARCHAR(24))
+--CREATE 
+ALTER
+		FUNCTION GetStartDate(@group_name AS NVARCHAR(24))
 RETURNS DATE
 AS
 BEGIN
@@ -11,6 +13,6 @@ BEGIN
 	IF	(dbo.GetLastDate(@group_name) = NULL)
 		SET @start_date = (SELECT start_date FROM Groups WHERE group_id = @group_id);
 	ELSE
-		SET @start_date = dbo.GetNextDate(dbo.GetLastDate(@group_name));
+		SET @start_date = dbo.GetNextDate(@group_name);
 	RETURN @start_date;
 END

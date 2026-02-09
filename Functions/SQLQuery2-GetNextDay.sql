@@ -1,4 +1,4 @@
-﻿--SQLQuery1-GetNextDay.sql
+﻿--SQLQuery2-GetNextDay.sql
 SET DATEFIRST 1;
 USE SPU_411_Import;
 GO
