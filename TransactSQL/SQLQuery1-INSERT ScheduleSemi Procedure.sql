@@ -18,20 +18,23 @@ BEGIN
 	DECLARE @start_time			AS TIME		= (SELECT start_time		FROM Groups			WHERE group_id = @group_id);
 	DECLARE @time				AS TIME		= @start_time;
 	DECLARE @number_of_lessons	AS TINYINT	= (SELECT number_of_lessons FROM Disciplines	WHERE discipline_id = @discipline_id);
-	DECLARE @lesson_number		AS INT		= 1;
+	DECLARE @pair_number		AS TINYINT	= 1;
+	DECLARE @recorded_lessons	AS TINYINT	= (SELECT COUNT(discipline) FROM Schedule WHERE discipline = @discipline_id AND [group] = @group_id);
+	DECLARE @remaining_lessons	AS TINYINT	= @number_of_lessons - @recorded_lessons;
+	DECLARE @lesson_number		AS INT		= @recorded_lessons + 1;
 
 	IF @date IS NULL SET @date = (SELECT start_date FROM Groups WHERE group_id = @group_id);
-	WHILE @lesson_number <= @number_of_lessons
+	WHILE @lesson_number <= @number_of_lessons AND @recorded_lessons <= @number_of_lessons
 	BEGIN
 		IF dbo.GetLastDate(@group_name) IS NOT NULL SET @date = dbo.GetNextDate(@group_name);
 		SET @time = @start_time;
-		EXEC sp_InsertLesson @group_id, @discipline_id, @teacher_id, @date, @time OUTPUT, @lesson_number OUTPUT;
-		--SET @time = DATEADD(MINUTE, 95,  @time);
-		EXEC sp_InsertLesson @group_id, @discipline_id, @teacher_id, @date, @time OUTPUT, @lesson_number OUTPUT;
-		--SET @time = DATEADD(MINUTE, 95,  @time);
-		EXEC sp_InsertLesson @group_id, @discipline_id, @teacher_id, @date, @time OUTPUT, @lesson_number OUTPUT;
-		PRINT @lesson_number;
-		PRINT '-------------------------------------------------';
+		SET @pair_number = 1;
+		WHILE @pair_number <=3
+		BEGIN
+			IF @lesson_number > @number_of_lessons BREAK;
+			EXEC sp_InsertLesson @group_id, @discipline_id, @teacher_id, @date, @time OUTPUT, @lesson_number OUTPUT;
+			SET @pair_number = @pair_number + 1;
+		END
 	END
 END
 
