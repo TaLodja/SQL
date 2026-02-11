@@ -24,7 +24,7 @@ BEGIN
 	DECLARE @lesson_number		AS INT		= @recorded_lessons + 1;
 
 	IF @date IS NULL SET @date = (SELECT start_date FROM Groups WHERE group_id = @group_id);
-	WHILE @lesson_number <= @number_of_lessons AND @recorded_lessons <= @number_of_lessons
+	WHILE @lesson_number <= @number_of_lessons AND @recorded_lessons < @number_of_lessons
 	BEGIN
 		IF dbo.GetLastDate(@group_name) IS NOT NULL SET @date = dbo.GetNextDate(@group_name);
 		SET @time = @start_time;
