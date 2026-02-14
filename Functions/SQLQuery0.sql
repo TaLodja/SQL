@@ -18,5 +18,9 @@ USE SPU_411_Import;
 --PRINT (dbo.GetStartDate(N'SPU_411'));
 
 --SELECT * FROM Schedule WHERE [group] = 3;
-EXEC sp_SelectScheduleFull;
-PRINT (dbo.GetNextDate(N'PV_211'));
+--EXEC sp_SelectScheduleFull;
+--PRINT (dbo.GetNextDate(N'PV_211'));
+
+--PRINT (dbo.GetNewYear(2017));
+--PRINT (dbo.GetSummertimeSadness(2022));
+PRINT (dbo.GetEasterDate(2026));
