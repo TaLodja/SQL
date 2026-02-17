@@ -7,14 +7,15 @@ GO
 ALTER
 		PROCEDURE sp_AddHolidays
 	@year	AS	SMALLINT,
-	@name	AS	NVARCHAR(150)
+	@id		AS	TINYINT
+	--@name	AS	NVARCHAR(150)
 AS
 BEGIN
 	DECLARE
-	@start_date	AS	DATE	= dbo.GetHolidaysStartDate(@name, @year),
-	@duration	AS	TINYINT = (SELECT duration		FROM Holidays	WHERE holiday_name LIKE @name),
-	@holiday_id	AS	TINYINT = (SELECT holiday_id	FROM Holidays	WHERE holiday_name LIKE @name);
-
+	@name		AS	NVARCHAR(150)	= (SELECT holiday_name FROM Holidays WHERE holiday_id = @id),
+	@duration	AS	TINYINT = (SELECT duration		FROM Holidays	WHERE holiday_id = @id);
+	--@holiday_id	AS	TINYINT = (SELECT holiday_id	FROM Holidays	WHERE holiday_name LIKE @name);
+	DECLARE @start_date	AS	DATE	= dbo.GetHolidaysStartDate(@name, @year);
 	DECLARE
 	@date		AS	DATE	= @start_date,
 	@day		AS	TINYINT	= 0;
@@ -22,7 +23,8 @@ BEGIN
 	WHILE @day < @duration AND @date NOT IN (SELECT [date] FROM DaysOFF)
 	BEGIN
 		INSERT DaysOFF	([date],holiday)
-		VALUES			(@date, @holiday_id);
+		VALUES			(@date, @id);
+		--VALUES			(@date, @holiday_id);
 		SET @day += 1;
 		SET @date = DATEADD(DAY, 1, @date);
 	END
